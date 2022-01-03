@@ -9,6 +9,8 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    @IBOutlet var myTableView: UITableView!
+    
     let formatter: DateFormatter = {
         let f = DateFormatter()
         f.dateStyle = .long
@@ -18,10 +20,29 @@ class TableViewController: UITableViewController {
         //f.locale = Locale(identifier: "Ko_kr")
         return f
     }()
-
+    
+    var token: NSObjectProtocol?
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+        print("token deinited")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        tableView.reloadData() // notification 으로 대체
+//        print(#function)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        token = NotificationCenter.default.addObserver(forName: DetailViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            self?.tableView.reloadData()
+        })
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

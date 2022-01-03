@@ -17,6 +17,10 @@ class Memo {
     
     static var dummyMemoList = [
         Memo(content: "Lorem Ipsum"),
-        Memo(content: "Subscribe + 👍 = ❤️")
+        Memo(content: "Subscribe 👍"),
+        Memo(content: "Lorem"),
+        Memo(content: "Subscribe ❤️"),
+        Memo(content: "Lom"),
+        Memo(content: "Subscribe 👍 ❤️")
     ]
 }

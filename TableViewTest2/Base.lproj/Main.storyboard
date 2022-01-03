@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Osk-By-2lq" detailTextLabel="upU-Se-MuU" style="IBUITableViewCellStyleSubtitle" id="h98-f3-oUT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="Osk-By-2lq" detailTextLabel="upU-Se-MuU" style="IBUITableViewCellStyleSubtitle" id="h98-f3-oUT">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="71.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h98-f3-oUT" id="glj-hx-sVE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="71.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Osk-By-2lq">
@@ -39,6 +40,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="cOv-64-N3X" kind="presentation" id="IRs-Kd-4iW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -47,10 +51,53 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="JhMemo" id="XoR-vH-XL3"/>
+                    <connections>
+                        <outlet property="myTableView" destination="e8J-oY-XLb" id="CeF-pM-2Gj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F38-Ba-UJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="398" y="61"/>
+        </scene>
+        <!--새메모-->
+        <scene sceneID="Nnq-1b-Laf">
+            <objects>
+                <viewController id="3iH-nF-eGa" customClass="DetailViewController" customModule="TableViewTest2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dj0-Ab-LpD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lore" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ylE-pM-dIs">
+                                <rect key="frame" x="20" y="0.0" width="374" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QT4-84-5yh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QT4-84-5yh" firstAttribute="bottom" secondItem="ylE-pM-dIs" secondAttribute="bottom" id="3t2-3j-s1r"/>
+                            <constraint firstItem="ylE-pM-dIs" firstAttribute="leading" secondItem="QT4-84-5yh" secondAttribute="leading" constant="20" id="Iyo-MN-KNZ"/>
+                            <constraint firstItem="QT4-84-5yh" firstAttribute="trailing" secondItem="ylE-pM-dIs" secondAttribute="trailing" constant="20" id="OyV-Iv-1eg"/>
+                            <constraint firstItem="ylE-pM-dIs" firstAttribute="top" secondItem="dj0-Ab-LpD" secondAttribute="top" id="oVW-v5-a1i"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="새메모" id="pzz-zd-zEi">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="sMA-1b-ykC">
+                            <connections>
+                                <action selector="Save:" destination="3iH-nF-eGa" id="f28-6P-r8b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memoTextView" destination="ylE-pM-dIs" id="oWL-3V-IVL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMz-h0-ztB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2097" y="61"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zQh-IE-rRT">
@@ -68,8 +115,30 @@
             </objects>
             <point key="canvasLocation" x="-492" y="61"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5MH-J1-u4D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cOv-64-N3X" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="mca-wg-YaV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F2r-Y6-bJg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3iH-nF-eGa" kind="relationship" relationship="rootViewController" id="6aR-OE-Wu0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LnG-Dc-Zoj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1256.521739130435" y="60.9375"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
