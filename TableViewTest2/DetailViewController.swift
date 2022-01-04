@@ -31,6 +31,7 @@ class DetailViewController: UIViewController {
             print(Memo.dummyMemoList[i].content)
         }
         
+        // notification 설정 1/4
         NotificationCenter.default.post(name: DetailViewController.newMemoDidInsert, object: nil)
         
         dismiss(animated: true, completion: nil)

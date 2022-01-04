@@ -20,8 +20,10 @@ class TableViewController: UITableViewController {
         //f.locale = Locale(identifier: "Ko_kr")
         return f
     }()
-    
+    // notification 설정 2/4
     var token: NSObjectProtocol?
+    
+    // notification 설정 4/4, 메모리 해제
     deinit {
         if let token = token {
             NotificationCenter.default.removeObserver(token)
@@ -32,13 +34,14 @@ class TableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        tableView.reloadData() // notification 으로 대체
+//        tableView.reloadData() // 전체화면이 아닌경우 viewWillAppear 호출이 안됨, notification 으로 대체 필요
 //        print(#function)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // notification 설정 3/4
         token = NotificationCenter.default.addObserver(forName: DetailViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
             self?.tableView.reloadData()
         })
